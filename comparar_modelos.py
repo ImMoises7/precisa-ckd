@@ -16,11 +16,13 @@ df = pd.read_csv(ENTRENAMIENTO)
 X = df.drop(columns=["class"])
 y = df["class"]
 
+
 def preprocesamiento():
     return [
         ("imputar", SimpleImputer(strategy="median")),
         ("escalar", StandardScaler()),
     ]
+
 
 def construir_modelos(peso_positivo):
     return {
@@ -30,15 +32,17 @@ def construir_modelos(peso_positivo):
         ]),
         "Random Forest": Pipeline(preprocesamiento() + [
             ("clasificador", RandomForestClassifier(
-                n_estimators=300, class_weight="balanced", random_state=SEMILLA)),
+                n_estimators=100, max_depth=5, min_samples_leaf=1,
+                class_weight="balanced", random_state=SEMILLA)),
         ]),
         "XGBoost": Pipeline(preprocesamiento() + [
             ("clasificador", XGBClassifier(
-                n_estimators=300, learning_rate=0.05, max_depth=3,
+                n_estimators=100, learning_rate=0.05, max_depth=2,
                 scale_pos_weight=peso_positivo,
                 eval_metric="logloss", random_state=SEMILLA)),
         ]),
     }
+
 
 nombres = ["Regresión logística", "Random Forest", "XGBoost"]
 metricas = ["auc", "exactitud", "f1", "sensibilidad", "especificidad"]
