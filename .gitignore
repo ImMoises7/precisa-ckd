@@ -1,0 +1,15 @@
+# Entorno virtual
+venv/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Datos derivados (se regeneran con preprocesamiento.py)
+data/procesado/
+
+# Editores y sistema
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
