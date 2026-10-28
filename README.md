@@ -35,6 +35,7 @@ Los scripts se ejecutan en este orden:
 6. `python optimizar.py`: búsqueda de hiperparámetros con GridSearchCV dentro de la validación cruzada.
 7. `python comparar_modelos.py`: comparación de los tres modelos con las configuraciones seleccionadas.
 8. `python entrenar_final.py`: entrenamiento final y evaluación única sobre el 15 % de prueba. Guarda el modelo en `modelos/modelo_xgboost.joblib`.
+9. `python demo.py`: muestra tres pacientes del conjunto de prueba con su diagnóstico real y la predicción del modelo. Requiere haber ejecutado `preprocesamiento.py` antes.
 
 ## Uso del modelo guardado
 
@@ -64,4 +65,4 @@ El dataset no documenta sus criterios diagnósticos, por lo que no puede garanti
 
 ## Autores
 
-Santiago Alfonso García Salazar, Nataly Sofia Camelo Hernandez, Moises Araujo.
+Santiago Alfonso García Salazar, Nataly Sofia Camelo Hernandez, Moises Fernando Araujo Pisciotti.
